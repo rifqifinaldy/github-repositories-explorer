@@ -11,12 +11,20 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript", "prettier"],
+    extends: [
+      "next/core-web-vitals",
+      "next/typescript",
+      "prettier",
+      "plugin:jest/recommended",
+      "plugin:jest-dom/recommended",
+      "plugin:testing-library/react",
+    ],
     rules: {
       semi: ["error"],
       quotes: ["error", "double"],
       "prefer-arrow-callback": ["error"],
     },
+    plugins: ["jest", "testing-library", "jest-dom"],
   }),
 ];
 
