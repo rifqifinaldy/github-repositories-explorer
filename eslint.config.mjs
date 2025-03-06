@@ -18,13 +18,19 @@ const eslintConfig = [
       "plugin:jest/recommended",
       "plugin:jest-dom/recommended",
       "plugin:testing-library/react",
+      "plugin:@typescript-eslint/recommended",
     ],
     rules: {
       semi: ["error"],
       quotes: ["error", "double"],
       "prefer-arrow-callback": ["error"],
+      "prefer-const": ["warn"],
+      "no-nested-ternary": "warn",
+      "no-unexpected-multiline": "warn",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
-    plugins: ["jest", "testing-library", "jest-dom"],
+    plugins: ["jest", "testing-library", "jest-dom", "@typescript-eslint"],
   }),
 ];
 
