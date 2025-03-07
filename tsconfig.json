@@ -19,7 +19,10 @@
       }
     ],
     "paths": {
-      "@gh-api/*": ["./src/*"]
+      "@pages/*": ["./src/app/*"],
+      "@components/*": ["./src/libs/components/*"],
+      "@helper/*": ["./src/libs/helper/*"],
+      "@themes/*": ["./src/libs/themes/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
