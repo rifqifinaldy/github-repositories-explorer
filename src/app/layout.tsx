@@ -1,13 +1,10 @@
+import { Provider } from "@components/_chakra-ui/provider";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Ubuntu } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ubuntu = Ubuntu({
+  variable: "--font-ubuntu-sans",
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
 
@@ -22,9 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html suppressHydrationWarning lang="en">
+      <body className={`${ubuntu.className}`}>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

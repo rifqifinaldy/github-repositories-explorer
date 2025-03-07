@@ -1,4 +1,4 @@
-import Home from "@gh-api/app/page";
+import Home from "@pages/page";
 import { screen, render } from "@testing-library/react";
 
 describe("<Home />", () => {
