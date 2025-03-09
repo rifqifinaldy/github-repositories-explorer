@@ -1,5 +1,9 @@
 // The Color below we're inspired by Github that i generated using chat gpt prompt
 export const COLOUR_PALLETE = {
+  text: {
+    light: { value: "#fafafa", description: "Light Text" },
+    dark: { value: "#131313", description: "Dark Text" },
+  },
   brand: {
     50: {
       value: "#e6f2ff",

@@ -18,37 +18,57 @@ interface InputFieldProps extends InputProps {
 const InputField: React.FC<InputFieldProps> = (props) => {
   const { register } = useFormContext();
 
+  // Destructure the props and exclude the ones we don't want to pass to Input
+  const {
+    label,
+    rightElement,
+    leftElement,
+    rightAddon,
+    leftAddon,
+    error,
+    helperText,
+    required,
+    onChange,
+    ...inputProps // This collects the remaining props to be passed to Input
+  } = props;
+
   return (
-    <Field.Root invalid={Boolean(props.error)}>
-      {props.label && (
-        <Field.Label htmlFor={props.id}>
-          {props.label}{" "}
-          {props.required && (
-            <Text color="red.500" fontWeight="600" as="span">
+    <Field.Root invalid={Boolean(error)}>
+      {label && (
+        <Field.Label color="gray.100" fontWeight={500} htmlFor={props.id}>
+          {label}{" "}
+          {required && (
+            <Text color="red.200" fontWeight="600" as="span" fontSize="xs">
               *
             </Text>
           )}
         </Field.Label>
       )}
       <InputGroup
-        startElement={props.leftAddon}
-        endElement={props.rightElement}
+        startElement={leftAddon || leftElement} // Pass leftAddon or leftElement to InputGroup
+        endElement={rightAddon || rightElement} // Pass rightAddon or rightElement to InputGroup
       >
         <Input
-          {...props}
-          bg="gray.900"
-          _placeholder={{ color: "green.100", opacity: "0.5" }}
+          {...inputProps} // Pass the remaining props to the Input component
+          bg="gray.950"
+          borderColor="gray.600"
+          _focus={{ borderColor: "brand.500", outline: "none" }}
+          _placeholder={{ color: "brand.50", opacity: "0.45", fontSize: "xs" }}
           {...register(props.id, {
             required: {
-              value: !!props.required,
+              value: !!required,
               message: "Please fill out this field",
             },
-            onChange: props.onChange,
+            onChange: onChange,
           })}
         />
       </InputGroup>
-      {props.helperText && <Text color="gray.500">{props.helperText}</Text>}
-      <Field.ErrorText>{props.error}</Field.ErrorText>
+      {helperText && (
+        <Field.HelperText fontSize="xs" color="gray.500">
+          {helperText}
+        </Field.HelperText>
+      )}
+      <Field.ErrorText>{error}</Field.ErrorText>
     </Field.Root>
   );
 };
