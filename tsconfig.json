@@ -23,7 +23,10 @@
       "@components/*": ["./src/libs/components/*"],
       "@helper/*": ["./src/libs/helper/*"],
       "@themes/*": ["./src/libs/themes/*"],
-      "@page-modules/*": ["./src/libs/page-modules/*"]
+      "@page-modules/*": ["./src/libs/page-modules/*"],
+      "@config/*": ["./src/libs/config/*"],
+      "@hooks/*": ["./src/libs/hooks/*"],
+      "@redux/*": ["./src/libs/redux/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
