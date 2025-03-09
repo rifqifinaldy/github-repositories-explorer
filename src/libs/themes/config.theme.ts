@@ -11,6 +11,8 @@ const THEMES = defineConfig({
     "html, body": {
       margin: 0,
       padding: 0,
+      backgroundColor: COLOUR_PALLETE.gray[900].value,
+      color: COLOUR_PALLETE.text.light.value,
     },
   },
   theme: {

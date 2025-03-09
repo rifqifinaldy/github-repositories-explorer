@@ -1,21 +1,9 @@
-import { Box, Button, Text } from "@chakra-ui/react";
-import { Avatar } from "@components/_chakra-ui/avatar";
+import HomePages from "@page-modules/home";
+import { NextPage } from "next";
+import React from "react";
 
-export default function Home() {
-  return (
-    <Box w="full">
-      <p>setting up</p>
-      <Avatar name="" />
-      <Button>Some Button</Button>
-      <Text textStyle="body/lg">
-        Whereas recognition of the inherent dignity
-      </Text>
-      <Text textStyle="body/md">
-        Whereas disregard and contempt for human rights have resulted
-      </Text>
-      <Text textStyle="body/sm">
-        Whereas disregard and contempt for human rights have resulted
-      </Text>
-    </Box>
-  );
-}
+const Home: NextPage = () => {
+  return <HomePages />;
+};
+
+export default Home;
