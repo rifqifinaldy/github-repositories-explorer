@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { Provider } from "@components/_chakra-ui/provider";
+import { UiProvider } from "@components/_chakra-ui/provider";
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 
@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={`${ubuntu.className}`}>
-        <Provider>
+        <UiProvider>
           <Box p="40px">{children}</Box>
-        </Provider>
+        </UiProvider>
       </body>
     </html>
   );
