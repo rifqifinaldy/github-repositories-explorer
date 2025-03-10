@@ -26,14 +26,18 @@ export default function RootLayout({
       <body className={`${ubuntu.className}`}>
         <StoreProvider>
           <UiProvider>
-            <Box p="40px">
+            <Box p={{ base: "12px", md: "40px" }}>
               <Flex
                 gap="20px"
                 flexDir="column"
                 justifyContent="center"
                 alignItems="center"
               >
-                <Flex w="786px" flexDir="column" gap="20px">
+                <Flex
+                  w={{ base: "full", md: "786px" }}
+                  flexDir="column"
+                  gap="20px"
+                >
                   {children}
                 </Flex>
               </Flex>

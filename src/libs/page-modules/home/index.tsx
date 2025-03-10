@@ -14,6 +14,7 @@ import {
   useForm,
 } from "react-hook-form";
 import { BiSearchAlt2 } from "react-icons/bi";
+import RepoCardSkeleton from "@components/_customs/cards/repo-card/index.skeleton";
 
 const HomePages: React.FC = () => {
   const [keyword, setKeyword] = useState<string>("");
@@ -61,7 +62,12 @@ const HomePages: React.FC = () => {
           flexDir="column"
           gap="12px"
         >
-          <Heading mb="8px" fontSize="5xl" as="h1" color="brand.500">
+          <Heading
+            mb="8px"
+            fontSize={{ sm: "2xl", lg: "5xl" }}
+            as="h1"
+            color="brand.500"
+          >
             Repositories Finder
           </Heading>
           <Text color="gray.200" fontSize="sm">
@@ -98,7 +104,11 @@ const HomePages: React.FC = () => {
       </FormProvider>
       {(success || error) && (
         <Flex w="full" flexDir="column" gap="20px">
-          <Flex justifyContent="space-between" alignItems="center">
+          <Flex
+            flexDir={{ base: "column", md: "row" }}
+            justifyContent="space-between"
+            alignItems={{ base: "flex-start", md: "center" }}
+          >
             <Text>Search Result for: {keyword}</Text>
             <Button variant="ghost" color="red.200" onClick={() => onReset()}>
               Reset
@@ -110,6 +120,7 @@ const HomePages: React.FC = () => {
           {Boolean(!userData) && Boolean(error && error?.status === 404) && (
             <NoResult />
           )}
+          <RepoCardSkeleton />
         </Flex>
       )}
     </>
