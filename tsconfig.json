@@ -26,7 +26,8 @@
       "@page-modules/*": ["./src/libs/page-modules/*"],
       "@config/*": ["./src/libs/config/*"],
       "@hooks/*": ["./src/libs/hooks/*"],
-      "@redux/*": ["./src/libs/redux/*"]
+      "@redux/*": ["./src/libs/redux/*"],
+      "@data-type/*": ["./src/libs/data-type/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

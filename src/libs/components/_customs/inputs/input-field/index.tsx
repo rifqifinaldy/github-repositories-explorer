@@ -33,7 +33,7 @@ const InputField: React.FC<InputFieldProps> = (props) => {
   } = props;
 
   return (
-    <Field.Root invalid={Boolean(error)}>
+    <Field.Root invalid={Boolean(error)} w="full">
       {label && (
         <Field.Label color="gray.100" fontWeight={500} htmlFor={props.id}>
           {label}{" "}
@@ -47,6 +47,7 @@ const InputField: React.FC<InputFieldProps> = (props) => {
       <InputGroup
         startElement={leftAddon || leftElement} // Pass leftAddon or leftElement to InputGroup
         endElement={rightAddon || rightElement} // Pass rightAddon or rightElement to InputGroup
+        w={inputProps.w}
       >
         <Input
           {...inputProps} // Pass the remaining props to the Input component
