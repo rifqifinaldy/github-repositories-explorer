@@ -14,8 +14,8 @@ const NoResult: React.FC<Props> = ({
   return (
     <EmptyState.Root>
       <EmptyState.Content>
-        <EmptyState.Indicator>
-          <HiColorSwatch />
+        <EmptyState.Indicator data-testid="empty-state-icon">
+          <HiColorSwatch data-testid="icon-image" />
         </EmptyState.Indicator>
         <VStack textAlign="center">
           <EmptyState.Title>{title}</EmptyState.Title>
