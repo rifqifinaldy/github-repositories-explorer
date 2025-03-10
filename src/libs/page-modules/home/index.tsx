@@ -22,14 +22,14 @@ const HomePages: React.FC = () => {
       search: "",
     },
   });
-  const { getGithubUser, resetUser, user } = useRepositories();
+  const { searchUser, resetUser, user } = useRepositories();
 
   const { pending, success, data: userData, error } = user;
   const { handleSubmit, watch, reset: resetForm } = methods;
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setKeyword(data.search);
-    getGithubUser(data.search);
+    searchUser(data.search);
   };
 
   const onReset = () => {
