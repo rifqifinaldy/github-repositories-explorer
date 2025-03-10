@@ -1,10 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import { IReducerState } from "../../types/global.type";
-import { REQUEST_USER_REPO } from "./action";
+import { REQUEST_RESET_USER_REPO, REQUEST_USER_REPO } from "./action";
+import { IReducerState } from "@data-type/global.type";
+import { IGitHubUser } from "@data-type/repositories.type";
 
 export type IRepositoriesState = {
-  user: IReducerState<unknown[] | []>;
+  user: IReducerState<IGitHubUser | null>;
 };
 
 const commonState = {
@@ -14,7 +15,7 @@ const commonState = {
 };
 
 const initialState: IRepositoriesState = {
-  user: { ...commonState, data: [], total: 0 },
+  user: { ...commonState, data: null, total: 0 },
 };
 
 export const REPOSITORIES_REDUCER = createReducer(initialState, (builder) => {
@@ -27,11 +28,15 @@ export const REPOSITORIES_REDUCER = createReducer(initialState, (builder) => {
     .addCase(REQUEST_USER_REPO.fulfilled, (state, { payload }) => {
       state.user.pending = false;
       state.user.success = true;
-      state.user.data = payload.data;
-      state.user.total = payload.total;
+      state.user.data = payload;
     })
     .addCase(REQUEST_USER_REPO.rejected, (state, { payload }) => {
       state.user.pending = false;
+      state.user.success = false;
+      state.user.data = null;
       state.user.error = payload as AxiosError;
+    })
+    .addCase(REQUEST_RESET_USER_REPO, (state) => {
+      state.user = initialState.user;
     });
 });

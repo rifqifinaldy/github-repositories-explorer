@@ -27,7 +27,7 @@
       "@config/*": ["./src/libs/config/*"],
       "@hooks/*": ["./src/libs/hooks/*"],
       "@redux/*": ["./src/libs/redux/*"],
-      "@types/*": ["./src/libs/types/*"]
+      "@data-type/*": ["./src/libs/data-type/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

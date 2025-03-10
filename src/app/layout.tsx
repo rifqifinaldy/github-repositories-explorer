@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { UiProvider } from "@components/_chakra-ui/provider";
 
 import type { Metadata } from "next";
@@ -26,7 +26,18 @@ export default function RootLayout({
       <body className={`${ubuntu.className}`}>
         <StoreProvider>
           <UiProvider>
-            <Box p="40px">{children}</Box>
+            <Box p="40px">
+              <Flex
+                gap="20px"
+                flexDir="column"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Flex w="786px" flexDir="column" gap="20px">
+                  {children}
+                </Flex>
+              </Flex>
+            </Box>
           </UiProvider>
         </StoreProvider>
       </body>

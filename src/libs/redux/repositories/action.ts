@@ -1,6 +1,6 @@
 import { API } from "@config/api-collection.config";
 import { REQUEST } from "@config/axios.config";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const REQUEST_USER_REPO = createAsyncThunk(
   "repo/user",
@@ -13,3 +13,5 @@ export const REQUEST_USER_REPO = createAsyncThunk(
     }
   }
 );
+
+export const REQUEST_RESET_USER_REPO = createAction("repo/reset-user");

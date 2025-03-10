@@ -1,10 +1,12 @@
 "use client";
 
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
+import NoResult from "@components/_customs/cards/no-result";
+import UserCard from "@components/_customs/cards/user-card";
 import InputField from "@components/_customs/inputs/input-field";
 import useRepositories from "@hooks/useRepositories";
 import { COLOUR_PALLETE } from "@themes/colors.theme";
-import React from "react";
+import React, { useState } from "react";
 import {
   FieldValues,
   FormProvider,
@@ -14,22 +16,39 @@ import {
 import { BiSearchAlt2 } from "react-icons/bi";
 
 const HomePages: React.FC = () => {
+  const [keyword, setKeyword] = useState<string>("");
   const methods = useForm({
     defaultValues: {
       search: "",
     },
   });
-  const { getGithubUser, user } = useRepositories();
+  const { getGithubUser, resetUser, user } = useRepositories();
 
-  const { pending, success } = user;
-  const { handleSubmit, watch } = methods;
+  const { pending, success, data: userData, error } = user;
+  const { handleSubmit, watch, reset: resetForm } = methods;
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setKeyword(data.search);
     getGithubUser(data.search);
   };
 
+  const onReset = () => {
+    resetForm();
+    resetUser();
+  };
+
+  const searchQuery = watch("search");
+  let helperText =
+    "Type the owner's username before submitting, e.g., rifqifinaldy.";
+
+  if (searchQuery) {
+    helperText = success
+      ? `Found 1 search result for ${searchQuery}`
+      : `You can now click the button below to search for '${searchQuery}'.`;
+  }
+
   return (
-    <Flex flexDir="column" justifyContent="center" alignItems="center" w="full">
+    <>
       <FormProvider {...methods}>
         <Flex
           bg="gray.800"
@@ -39,7 +58,6 @@ const HomePages: React.FC = () => {
           p="20px"
           onSubmit={handleSubmit(onSubmit)}
           as="form"
-          w="768px"
           flexDir="column"
           gap="12px"
         >
@@ -63,30 +81,38 @@ const HomePages: React.FC = () => {
               size="md"
               w="full"
               required
-              rightElement={<BiSearchAlt2 />}
-              helperText={
-                watch("search")
-                  ? `You can now click the button below to search for '${watch("search")}'.`
-                  : "Type the owner's username before submitting, e.g., rifqifinaldy."
-              }
+              rightElement={<BiSearchAlt2 size="20px" />}
+              helperText={helperText}
             />
             <Button
               loading={pending}
+              loadingText="Please Wait..."
               disabled={watch("search")?.length <= 0}
               type="submit"
               colorPalette="blue"
             >
               Search
             </Button>
-            {success && (
-              <Text role="button" fontSize="xs" color="gray.200">
-                Reset
-              </Text>
-            )}
           </Flex>
         </Flex>
       </FormProvider>
-    </Flex>
+      {(success || error) && (
+        <Flex w="full" flexDir="column" gap="20px">
+          <Flex justifyContent="space-between" alignItems="center">
+            <Text>Search Result for: {keyword}</Text>
+            <Button variant="ghost" color="red.200" onClick={() => onReset()}>
+              Reset
+            </Button>
+          </Flex>
+          {userData && success && (
+            <UserCard key={`user-${userData?.id}`} user={userData} />
+          )}
+          {Boolean(!userData) && Boolean(error && error?.status === 404) && (
+            <NoResult />
+          )}
+        </Flex>
+      )}
+    </>
   );
 };
 
