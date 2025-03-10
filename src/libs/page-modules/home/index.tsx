@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
-import NoResult from "@components/_customs/cards/no-result";
+import NoResult from "@components/_customs/empty/no-result";
 import UserCard from "@components/_customs/cards/user-card";
 import InputField from "@components/_customs/inputs/input-field";
 import useRepositories from "@hooks/useRepositories";

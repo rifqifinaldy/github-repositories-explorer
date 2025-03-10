@@ -1,8 +1,11 @@
 import "@testing-library/jest-dom";
 
-if (typeof globalThis.structuredClone !== "function") {
-  globalThis.structuredClone = (obj) => JSON.parse(JSON.stringify(obj));
-}
+globalThis.structuredClone = (obj) => {
+  if (obj === undefined) {
+    return obj;
+  }
+  return JSON.parse(JSON.stringify(obj));
+};
 
 global.matchMedia =
   global.matchMedia ||
