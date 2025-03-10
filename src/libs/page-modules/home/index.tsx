@@ -14,7 +14,6 @@ import {
   useForm,
 } from "react-hook-form";
 import { BiSearchAlt2 } from "react-icons/bi";
-import RepoCardSkeleton from "@components/_customs/cards/repo-card/index.skeleton";
 
 const HomePages: React.FC = () => {
   const [keyword, setKeyword] = useState<string>("");
@@ -120,7 +119,6 @@ const HomePages: React.FC = () => {
           {Boolean(!userData) && Boolean(error && error?.status === 404) && (
             <NoResult />
           )}
-          <RepoCardSkeleton />
         </Flex>
       )}
     </>
