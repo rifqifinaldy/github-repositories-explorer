@@ -20,7 +20,11 @@ const UserCard: React.FC<{ user: IGitHubUser }> = ({ user }) => {
       gap="12px"
       w="full"
     >
-      <Flex alignItems="center" gap="20px">
+      <Flex
+        flexDir={{ base: "column", md: "row" }}
+        alignItems="center"
+        gap="20px"
+      >
         <Box w="125px" h="125px">
           <Avatar
             size="full"

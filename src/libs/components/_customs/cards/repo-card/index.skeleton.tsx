@@ -13,7 +13,10 @@ const RepoCardSkeleton: React.FC = () => {
       gap="12px"
       w="full"
     >
-      <Flex justifyContent="space-between">
+      <Flex
+        justifyContent="space-between"
+        flexDir={{ base: "column", md: "row" }}
+      >
         <Box>
           <SkeletonText color="blue" height="20px" width="200px" />
           <Skeleton height="16px" width="250px" mt="6px" />
