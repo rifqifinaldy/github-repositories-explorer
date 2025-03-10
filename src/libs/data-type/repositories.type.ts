@@ -80,3 +80,8 @@ export interface IGitHubLicense {
   url: string | null;
   node_id: string;
 }
+
+export interface IRepoPayload {
+  query: string;
+  per_page?: number;
+}
