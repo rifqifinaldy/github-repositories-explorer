@@ -59,9 +59,6 @@ const UserRepoPages: React.FC = () => {
         <Flex justifyContent="space-between">
           <Box>
             <Text fontSize="lg">{userQuery} Owned Public Repositories</Text>
-            <Text fontSize="sm" color="gray.200">
-              Found {total} public repositories
-            </Text>
           </Box>
           <Button onClick={() => push(NAVIGATION.HOMEPAGE)} colorPalette="blue">
             Search another
